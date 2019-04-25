@@ -1,17 +1,103 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
+<style>
+    @media (min-width: 800px) {
+        .banner-mobile {
+            display: none;
+        }
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
-</ion-content>
+        .box {
+            width: 50%;
+            height: 400px;
+            background: lightblue;
+            margin: 20px auto;
+            border: 4px solid red;
+            box-shadow: 5px 5px;
+
+
+        }
+
+    }
+
+    @media (min-width: 800px) {
+        .banner-mobile {
+            display: none;
+        }
+
+        .box2 {
+            width: 20%;
+            height: 150px;
+            background: lightblue;
+            margin: 20px auto;
+            border: 4px solid red;
+            box-shadow: 5px 5px;
+
+        }
+    }
+
+    @media (min-width: 800px) {
+        .banner-mobile {
+            display: none;
+        }
+
+        .box3 {
+            width: 20%;
+            height: 150px;
+            background: lightblue;
+            margin: 20px auto;
+            border: 4px solid red;
+            box-shadow: 5px 5px;
+            float: left;
+            align-content: center;
+
+        }
+    }
+
+    @media (min-width: 800px) {
+        .banner-mobile {
+            display: none;
+        }
+
+        .box4 {
+            width: 20%;
+            height: 150px;
+            background: lightblue;
+            border: 4px solid red;
+            box-shadow: 5px 5px;
+            text-align: left;
+            float: right;
+            align-content: center;
+        }
+    }
+</style>
+
+<body>
+    <div>
+        <button (click)="getWeather()" ion-button large>Update Weather</button>
+    </div>
+    <div class="box">
+        <h2 class="location"> {{cityName}} </h2>
+        <h2 class="country"> Country: {{country}}</h2>
+        <h2 class="location">Temp: {{temperature}}&deg;</h2>
+        <h2 *ngFor='let weather of weather' class='location'>{{cityName}} has: {{weather.description}}</h2>
+        <h2 class="icon"> <img src="http://openweathermap.org/img/w/{{icon}}.png"></h2>
+
+    </div>
+    <div class="box2">
+        <h2 class="clouds">Clouds: {{clouds}}</h2>
+        <h2 class="humid">Humidity: {{humid}}</h2>
+    </div>
+
+    <div class="box3">
+
+        <h2 class="lowest">Lowest temp: {{lowest}}</h2>
+        <h3 class="highest">Highest temp: {{highest}}</h3>
+    </div>
+
+    <div class="box4">
+        <h2 class="lattitude">lattitude: {{lattitude}}</h2>
+        <h2 class="longitude">longitude: {{longitude}}</h2>
+    </div>
+    <ion-footer>
+        <ion-navbar>
+            <ion-title>EURO WEATHER</ion-title>
+        </ion-navbar>
+    </ion-footer>

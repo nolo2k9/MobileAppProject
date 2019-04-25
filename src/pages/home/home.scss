@@ -1,3 +1,64 @@
-page-home {
 
+.temperature{
+    font-size: 150px;
+    width: 100px;
+    text-align: center;
+    font-weight: normal;
+}
+.location {
+    text-align: center;
+    font-size: 40px;
+
+}
+.icon {
+    text-align: center;
+}
+.cityName{
+    text-align: center;
+}
+.weather.descriptin{
+    text-align: center;
+
+}
+.icon img
+ {
+    width: 120px;
+}
+
+.highest
+{
+    text-align: center;
+   
+}
+.lattitude
+{
+    text-align: center;
+    
+}
+.longitude
+{
+    text-align: center;
+    
+}
+.lowest
+{
+    text-align: center;
+    
+}
+.country{
+    text-align: center;
+    font-size: 40px;
+}
+.clouds{
+    text-align: center;
+}
+.humid{
+    text-align: center;
+}
+.box{
+    text-align: center;
+}
+
+.goHome {
+    background: color($colors, dark);
 }
