@@ -1,82 +1,101 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Choose weather</ion-title>
-  </ion-navbar>
-</ion-header>
+<style>
+  .box {
+    width: 100%;
+    height: 1170px;
+    border: 4px solid steelblue;
+    box-shadow: 5px 5px;
+    text-align: left;
+    float: right;
+    align-content: center;
+    scroll-behavior: auto;
+  }
+</style>
 
-<ion-content padding>
-  <ion-list radio-group [(ngModel)]="city">
-    <ion-item>
-      <ion-label>Galway</ion-label>
-      <ion-radio value="Galway"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Dublin</ion-label>
-      <ion-radio value="Dublin"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>London</ion-label>
-      <ion-radio value="London"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Brussels</ion-label>
-      <ion-radio value="Brussels"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Berlin</ion-label>
-      <ion-radio value="Berlin"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Madrid</ion-label>
-      <ion-radio value="Madrid"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Lisbon</ion-label>
-      <ion-radio value="Lisbon"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Rome</ion-label>
-      <ion-radio value="Rome"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Stockholm</ion-label>
-      <ion-radio value="Stockholm"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Glasgow</ion-label>
-      <ion-radio value="Glasgow"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Cardiff</ion-label>
-      <ion-radio value="Cardiff"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Amsterdam</ion-label>
-      <ion-radio value="Amsterdam"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Copenhagen</ion-label>
-      <ion-radio value="Copenhagen"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Warsaw</ion-label>
-      <ion-radio value="Warsaw"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Oslo</ion-label>
-      <ion-radio value="Oslo"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Helsinki</ion-label>
-      <ion-radio value="Helsinki"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Vienna</ion-label>
-      <ion-radio value="Vienna"></ion-radio>
-    </ion-item>
+<body>
+  <div class="box">
 
-  </ion-list>
-  <button (click)="onSave()" ion-button round>Add Weather</button>
+    <ion-header>
+      <ion-navbar>
+        <ion-title>Choose weather</ion-title>
+      </ion-navbar>
+    </ion-header>
+
+    <ion-content padding>
+      <ion-list radio-group [(ngModel)]="city">
+        <ion-item>
+          <ion-label>Dublin</ion-label>
+          <ion-radio value="Dublin"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>London</ion-label>
+          <ion-radio value="London"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Brussels</ion-label>
+          <ion-radio value="Brussels"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Berlin</ion-label>
+          <ion-radio value="Berlin"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Madrid</ion-label>
+          <ion-radio value="Madrid"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Lisbon</ion-label>
+          <ion-radio value="Lisbon"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Rome</ion-label>
+          <ion-radio value="Rome"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Stockholm</ion-label>
+          <ion-radio value="Stockholm"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Amsterdam</ion-label>
+          <ion-radio value="Amsterdam"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Copenhagen</ion-label>
+          <ion-radio value="Copenhagen"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Warsaw</ion-label>
+          <ion-radio value="Warsaw"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Vienna</ion-label>
+          <ion-radio value="Vienna"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Luxembourg</ion-label>
+          <ion-radio value="Luxembourg"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Budapest</ion-label>
+          <ion-radio value="Budapest"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Prague</ion-label>
+          <ion-radio value="Prauge"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Zurich</ion-label>
+          <ion-radio value="Zurich"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Reykjavik</ion-label>
+          <ion-radio value="REYKJAVIK"></ion-radio>
+        </ion-item>
+
+      </ion-list>
+      <button (click)="onSave()" ion-button medium round color="primary" icon-right>
+        <ion-icon name="add"></ion-icon>
+        Add Weather
+      </button>
 
 
-</ion-content>
+    </ion-content>

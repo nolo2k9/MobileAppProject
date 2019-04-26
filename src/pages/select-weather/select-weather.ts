@@ -23,6 +23,10 @@ export class SelectWeatherPage {
 
   }
 
+  //loads the citys in infinite scroll
+  loadCitys(){
+    
+  }
   //did the status page load?
   ionViewDidLoad() {
     console.log('ionViewDidLoad StatusPage');
