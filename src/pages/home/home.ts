@@ -4,6 +4,7 @@ import { ForcastProvider } from '../../providers/forcast/forcast';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { ɵparseCookieValue } from '@angular/common';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { Storage } from '@ionic/storage';
 })
 //initialise variables
 export class HomePage {
-//weather variable
+  //weather variable
   weather: any;
 
   //cityName variable
@@ -51,28 +52,38 @@ export class HomePage {
   //varibale to return humidity
   humid: any;
 
-//Constructor with imports loaded
+  //Constructor with imports loaded
   constructor(private forcastPro: ForcastProvider, public navCtrl: NavController, private storage: Storage) { }
 
-//gets weather status from "select weather" and puts "information" passed from "select weather" and assigns it to val
+  //Navigate to weather page
+  getWeather() {
+    this.navCtrl.push('SelectWeatherPage');
+  }
+  //gets the string of the country
+  recieveWeather(country: string) {
+    this.weather.country(country)
+  }
+
+  //gets weather status from "select weather" and puts "information" passed from "select weather" and assigns it to val
   ionViewWillEnter() {
+
     this.storage.get("weatherStatus").then((val) => {
       //if/ else to determine if  default webpage needed
-      if (val != null) {
-        this.information = val;
-      }
-      else if (val == null) {
+
+      if (val == null) {
         this.location =
           {
             //dublin default
             city: 'Dublin',
-            temperature: " ",
+            temperature: " "
 
           }
+
+
         this.cityName = 'Dublin';
         //getting the city after deafult has been shown
         this.forcastPro.getWeather(this.location.city).subscribe(weather => {
-          
+
           this.weather = weather.weather;
 
           //returns city name
@@ -102,7 +113,7 @@ export class HomePage {
           //round lowest degrees to even number
           this.lowest = Math.round(this.lowest - 273);
 
-           //round highest degrees to even number
+          //round highest degrees to even number
           this.highest = Math.round(this.highest - 273);
 
           //returns the country the city is in
@@ -117,74 +128,75 @@ export class HomePage {
         });
       }
 
-    }).catch((err) => {
-      console.log(err);
-    });
-    //when the user selects an other city apart from default
-    this.location =
-      {
-        city: this.information,
-        temperature: " ",
+
+      //if val isnt null stores previous selection or updates storage
+      else if (val != null) {
+        this.information = val;
+
+        //when the user selects an other city apart from default
+        this.location =
+          {
+            city: this.information,
+            temperature: " ",
+
+          }
+        this.cityName = val;
+
+        //passes varibles set to relivant responses on the weather Api
+        this.forcastPro.getWeather(this.location.city).subscribe(weather => {
+          this.weather = weather.weather;
+
+          //returns city name
+          this.cityName = weather.name;
+
+          //returns temperature
+          this.temperature = weather.main.temp;
+
+          //returns the icon associated with weather
+          this.icon = weather.weather[0].icon;
+
+          //returns temperature rounded to nearest value (otherwise returns a long value eg 1.1111111111111111)
+          this.temperature = Math.round(this.temperature - 273)
+
+          //returns lattitude of current area
+          this.lattitude = weather.coord.lat;
+
+          //returns longitude of current area
+          this.longitude = weather.coord.lon;
+
+          //reuturns highest expected weather
+          this.highest = weather.main.temp_max;
+
+          //round lowest degrees to even number
+          this.lowest = weather.main.temp_min;
+
+          //round lowest degrees to even number
+          this.lowest = Math.round(this.lowest - 273);
+
+          //round highest degrees to even number
+          this.highest = Math.round(this.highest - 273);
+
+          //returns the country the city is in
+          this.country = weather.sys.country;
+
+          // returns the number of clouds 
+          this.clouds = weather.clouds.all;
+
+          //returns the humidity
+          this.humid = weather.main.humidity;
+
+        });
 
       }
-      //passes varibles set to relivant responses on the weather Api
-    this.forcastPro.getWeather(this.location.city).subscribe(weather => {
-      this.weather = weather.weather;
 
-      //returns city name
-      this.cityName = weather.name;
 
-      //returns temperature
-      this.temperature = weather.main.temp;
-
-       //returns the icon associated with weather
-      this.icon = weather.weather[0].icon;
-
-      //returns temperature rounded to nearest value (otherwise returns a long value eg 1.1111111111111111)
-      this.temperature = Math.round(this.temperature - 273)
-
-      //returns lattitude of current area
-      this.lattitude = weather.coord.lat;
-
-       //returns longitude of current area
-      this.longitude = weather.coord.lon;
-
-      //reuturns highest expected weather
-      this.highest = weather.main.temp_max;
-
-      //round lowest degrees to even number
-      this.lowest = weather.main.temp_min;
-
-      //round lowest degrees to even number
-      this.lowest = Math.round(this.lowest - 273);
-
-      //round highest degrees to even number
-      this.highest = Math.round(this.highest - 273);
-
-      //returns the country the city is in
-      this.country = weather.sys.country;
-
-       // returns the number of clouds 
-      this.clouds = weather.clouds.all;
-
-      //returns the humidity
-      this.humid = weather.main.humidity;
-
+    }
+    ).catch((err) => {
+      console.log(err);
     });
-  }
-  //Navigate to weather page
-  getWeather() {
-    this.navCtrl.push('SelectWeatherPage');
-  }
-  //gets the string of the country
-  recieveWeather(country: string) {
-    this.weather.country(country)
-  }
 
 
 
+
+  }
 }
-
-
-
-
